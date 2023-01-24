@@ -410,7 +410,7 @@ export abstract class AbstractServer {
 			server = http.createServer(app);
 		}
 
-		const PORT = process.env.PORT;
+		const PORT = parseInt(process.env.PORT ?? config.getEnv('port'));
 		const ADDRESS = config.getEnv('listen_address');
 
 		server.on('error', (error: Error & { code: string }) => {
